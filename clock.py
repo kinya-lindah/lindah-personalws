@@ -1,11 +1,9 @@
 import time
-import random
 import tkinter as tk
-from tkinter.ttk import *
 from tkinter import *
 from beepy import *
 from threading import *
-
+from tkmacosx import Button as button
 #digital clock with alarm and timer with tkinter gui
 
 x = 'MidnightBlue'
@@ -170,7 +168,7 @@ def settimer():
 
 def active():
     global timeron
-    snoozebuttontimer.pack(side='left')
+    snoozebuttontimer.pack(side='right')
     cancelbuttontimer.pack(side='left')
     tt = int(variable3.get()) * 3600 + int(variable4.get()) * 60 + int(variable5.get())
     while tt >= 0 and timeron:
@@ -227,21 +225,22 @@ empty = Label(root, text="", bg=x)
 empty1 = Label(root, text="", bg=x)
 
 timer = Label(root, text=time.strftime('%H:%M:%S '), font=('calibri', 25, 'bold'), borderwidth=2, relief="raised", foreground=y, bg="AliceBlue")
-buttonframes = Frame(root)
+buttonframes = Frame(root, bg=x)
 buttonframes.config(background=x)
-alarmbutton = tk.Button(buttonframes, text="Alarm", command=pressed,)
+alarmbutton = button(buttonframes, text="Alarm", command=pressed, background='GhostWhite',borderwidth=2, relief=RAISED, padx=10, pady=10)
 empty2 = Label(buttonframes, text="", bg=x)
-timerbutton = Button(buttonframes, text="Timer", command=pressedt)
+timerbutton = button(buttonframes, text="Timer", command=pressedt, background='GhostWhite',borderwidth=2, relief=RAISED, padx=10, pady=10)
 
 setframes = Frame(root, bg=x)
 empty3 = Label(setframes, text="", bg=x)
+
 variable1 = StringVar(setframes)
 variable1.set(timer['text'][:2])
 firstpart = OptionMenu(setframes, variable1, '00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24')
 variable2 = StringVar(setframes)
 variable2.set("00")
 secondpart = OptionMenu(setframes, variable2, '00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60')
-setbutton2 = Button(setframes, text="SET", command=Threaded, fg='black')
+setbutton2 = button(setframes, text="SET", command=Threaded, fg='black', background='GhostWhite',borderwidth=2, relief=RAISED)
 firstpart.config(bg=x)
 secondpart.config(bg=x)
 
@@ -257,7 +256,7 @@ fifthpart = OptionMenu(setframes, variable5, '00', '01', '02', '03', '04', '05',
 thirdpart.config(bg=x)
 forthpart.config(bg=x)
 fifthpart.config(bg=x)
-setbutton = Button(setframes, text="START", command=settimer)
+setbutton = button(setframes, text="START", command=settimer, background='GhostWhite',borderwidth=2, relief=RAISED)
 alarmlabel = Label(setframes, text="Alarm", bg=x, fg='White')
 timerlabel = Label(setframes, text="Timer", bg=x, fg='White')
 
@@ -266,12 +265,12 @@ empty4 = Frame(root, bg=x)
 e1 = Label(empty4, bg=x )
 
 snoozeframes = Frame(root, bg=x, bd=6)
-snoozebutton = Button(snoozeframes, text="+10 min",borderwidth=0,  command=snooze)
-cancelbutton = Button(snoozeframes, text="Done", command=cancelalarm)
+snoozebutton = button(snoozeframes, text="+10 min",borderwidth=2,  command=snooze, background='GhostWhite',  relief=RAISED)
+cancelbutton = button(snoozeframes, text="Done", command=cancelalarm, background='GhostWhite',borderwidth=2, relief=RAISED)
 
 timersnoozeframes = Frame(root, bg=x)
-snoozebuttontimer = Button(timersnoozeframes, text="+30 Seconds", command=add30)
-cancelbuttontimer = Button(timersnoozeframes, text="-30 Seconds", command=sub30)
+snoozebuttontimer = button(timersnoozeframes, text="+30 Seconds", command=add30, background='GhostWhite',borderwidth=2, relief=RAISED)
+cancelbuttontimer = button(timersnoozeframes, text="-30 Seconds", command=sub30, background='GhostWhite',borderwidth=2, relief=RAISED)
 timeleftlabel = Label(timersnoozeframes, text="1", bg=x, relief="raised", fg='white')
 
 
