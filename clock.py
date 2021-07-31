@@ -75,6 +75,10 @@ def setalarm():
                             variable2.set(str(int(variable2.get() + 3 - 60)))
                     else:
                         variable2.set(str(int(variable2.get()) + 3))
+            if set_alarm_time != f"{variable1.get()}:{variable2.get()}":
+                alarmon = False
+                setbutton2['fg'] = 'black'
+
     else:
         setbutton2['fg'] = 'black'
         alarmon = False
@@ -224,6 +228,7 @@ root.title("Alarm Clock")
 empty = Label(root, text="", bg=x)
 empty1 = Label(root, text="", bg=x)
 
+
 timer = Label(root, text=time.strftime('%H:%M:%S '), font=('calibri', 25, 'bold'), borderwidth=2, relief="raised", foreground=y, bg="AliceBlue")
 buttonframes = Frame(root, bg=x)
 buttonframes.config(background=x)
@@ -285,6 +290,7 @@ alarmbutton.pack(side='left')
 empty2.pack(side='left')
 timerbutton .pack(side='left')
 empty.pack()
+
 timer.pack()
 empty3.pack()
 setframes.pack()
